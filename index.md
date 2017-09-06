@@ -23,8 +23,8 @@ Here are a list of planning, ongoing and finished projects
 Contact me:
 
 to avoid spam, you need to be smarter than a web crawler
-if my id# were 123456789, my email would be 123456789@qq.com
-now my id# is 949482709, my email would be...?
+if my id# were `123456789`, my email would be `123456789@qq.com`
+now my id# is `949482709`, my email would be...?
 
 ----
 
