@@ -17,7 +17,7 @@ Here are a list of planning, ongoing and finished projects
 
 
 [1]:https://github.com/yk-liu/list-based-evolutionary-algorithm
-[2]:https://github.com/yk-liu/yk-liu.github.io/edit/master/index.md
+[2]:https://github.com/yk-liu/curve-alignment
 
 ------------
 contact :
