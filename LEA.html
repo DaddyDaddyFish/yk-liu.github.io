@@ -1,0 +1,880 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   ::selection,a::selection{background:rgba(255,255,0,.3)}a,a::selection{color:#0645ad}hr,img{border:0}a,ins{text-decoration:none}::selection,ins,mark{color:#000}dfn,mark{font-style:italic}hr,ol,p,ul{margin:1em 0}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}hr,pre code,table,table tr{padding:0}pre,pre code{white-space:pre}html{font-size:100%;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{color:#444;font-family:Georgia,Palatino,"Palatino Linotype",Times,"Times New Roman",serif;font-size:12px;line-height:1.5em;padding:1em;margin:auto;max-width:42em;background:#fefefe}a:visited{color:#0b0080}a:hover{color:#06e}a:active{color:#faa700}a:focus{outline:dotted thin}a:active,a:hover{outline:0}::-moz-selection{background:rgba(255,255,0,.3);color:#000}a::-moz-selection{background:rgba(255,255,0,.3);color:#0645ad}img{max-width:100%;-ms-interpolation-mode:bicubic;vertical-align:middle}h1,h2,h3,h4,h5,h6{font-weight:400;color:#111;line-height:1em}b,h4,h5,h6,mark,strong,table tr th{font-weight:700}h1{font-size:2.5em}h2{font-size:2em}h3{font-size:1.5em}h4{font-size:1.2em}h5{font-size:1em}h6{font-size:.9em}blockquote{color:#666;margin:0;padding-left:3em;border-left:.5em #EEE solid}hr{display:block;height:2px;border-top:1px solid #aaa;border-bottom:1px solid #eee}code,kbd,pre,samp{color:#000;font-family:monospace,monospace;font-size:.98em}pre{white-space:pre-wrap;word-wrap:break-word}ins{background:#ff9}mark{background:#ff0}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}ol,ul{padding:0 0 0 2em}li p:last-child{margin:0}dd{margin:0 0 0 2em}table{border-collapse:collapse;border-spacing:0}td{vertical-align:top}@media only screen and (min-width:480px){body{font-size:14px}}@media only screen and (min-width:768px){body{font-size:16px}}@media print{blockquote,img,pre,tr{page-break-inside:avoid}*{background:0 0!important;color:#000!important;filter:none!important;-ms-filter:none!important}body{font-size:12pt;max-width:100%}a,a:visited{text-decoration:underline}hr{height:1px;border:0;border-bottom:1px solid #000}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}blockquote,pre{border:1px solid #999;padding-right:1em}img{max-width:100%!important}@page :left{margin:15mm 20mm 15mm 10mm}@page :right{margin:15mm 10mm 15mm 20mm}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;border:none;background:0 0}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h1 id="documentation-for-list-based-evolutionary-algorithm">
+   Documentation for List-based Evolutionary Algorithm
+  </h1>
+  <p>
+   author : Yingkai Liu
+   <br/>
+   updated : Aug.2017
+  </p>
+  <div class="toc">
+   <ul>
+    <li>
+     <a href="#documentation-for-list-based-evolutionary-algorithm">
+      Documentation for List-based Evolutionary Algorithm
+     </a>
+     <ul>
+      <li>
+       <a href="#1-code-overview">
+        1. code overview
+       </a>
+      </li>
+      <li>
+       <a href="#2-functions-and-implementation">
+        2. functions and implementation
+       </a>
+       <ul>
+        <li>
+         <a href="#21-class-attributes">
+          2.1  class attributes
+         </a>
+        </li>
+        <li>
+         <a href="#22-functions">
+          2.2 functions
+         </a>
+         <ul>
+          <li>
+           <a href="#221-assign_fitnessselfgene">
+            2.2.1 assign_fitness(self,gene)
+           </a>
+          </li>
+          <li>
+           <a href="#222-initialize_chromosomeself">
+            2.2.2 initialize_chromosome(self)
+           </a>
+          </li>
+          <li>
+           <a href="#223-initialize_chromosomesselfpopulation_size">
+            2.2.3 initialize_chromosomes(self,population_size)
+           </a>
+          </li>
+          <li>
+           <a href="#224-roulette_fitnessself">
+            2.2.4 roulette_fitness(self)
+           </a>
+          </li>
+          <li>
+           <a href="#225-mutatechromosome-mutate_strength1">
+            2.2.5 mutate(chromosome, mutate_strength=1)
+           </a>
+          </li>
+          <li>
+           <a href="#226-migrateselfimmigration_size">
+            2.2.6 migrate(self,immigration_size)
+           </a>
+          </li>
+          <li>
+           <a href="#227-hybridfathermother">
+            2.2.7 hybrid(father,mother)
+           </a>
+          </li>
+          <li>
+           <a href="#228-population_crossoverselfroulettefalsecrossover_ratio01">
+            2.2.8 population_crossover(self,roulette=False,crossover_ratio=0.1)
+           </a>
+          </li>
+          <li>
+           <a href="#229-assign_simiarityselfpair">
+            2.2.9 assign_simiarity(self,pair)
+           </a>
+          </li>
+          <li>
+           <a href="#2210-nicheself-niche_ratio00-niche_criterion00">
+            2.2.10 niche(self, niche_ratio=0.0, niche_criterion=0.0)
+           </a>
+          </li>
+          <li>
+           <a href="#2211-selectself-select_ratio00-select_criterion00">
+            2.2.11 select(self, select_ratio=0.0, select_criterion=0.0)
+           </a>
+          </li>
+          <li>
+           <a href="#2212-evolveself-niche_ratio01-niche_criterion00">
+            2.2.12 evolve(self, niche_ratio=0.1, niche_criterion=0.0)
+           </a>
+          </li>
+         </ul>
+        </li>
+       </ul>
+      </li>
+      <li>
+       <a href="#3complex-ideas">
+        3.complex ideas
+       </a>
+       <ul>
+        <li>
+         <a href="#31-multiple-hybrid">
+          3.1 multiple hybrid
+         </a>
+        </li>
+        <li>
+         <a href="#32-hybrid-strictly-according-to-fitness">
+          3.2 hybrid strictly according to fitness
+         </a>
+        </li>
+        <li>
+         <a href="#33-make-a-method-ranks-the-fitness-number-each-chromosome">
+          3.3 make a method ranks the fitness / number each chromosome /…
+         </a>
+        </li>
+       </ul>
+      </li>
+      <li>
+       <a href="#4-code">
+        4. code
+       </a>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </div>
+  <h2 id="1-code-overview">
+   1. code overview
+  </h2>
+  <p>
+   This code is written in python. Used packages only includes
+   <code>
+    easygui
+   </code>
+   <code>
+    radom
+   </code>
+   <code>
+    itertools
+   </code>
+   to utilize maximum compatibility.
+  </p>
+  <p>
+   This code is designed to perform evolutionary algorithm on a population whose gene are in the form of lists. The
+   <code>
+    fitness function
+   </code>
+   is an arbitrary user defined function. It can be as simple as
+   <code>
+    sum
+   </code>
+   or any other complicated function such as the
+   <code>
+    how similar of a graph A compared to B
+   </code>
+   .
+  </p>
+  <p>
+   This code features a relatively wide range of evolutionary operators.
+   <code>
+    mutate
+   </code>
+   <code>
+    hybrid
+   </code>
+   <code>
+    select
+   </code>
+   are three basics ones. To prevent pre-mature, there are two other functions
+   <code>
+    migrate
+   </code>
+   and
+   <code>
+    niche
+   </code>
+   .
+  </p>
+  <p>
+   The whole package is included in a single class called population. you can add new functions to this class as well, such as
+   <code>
+    adapt
+   </code>
+   (which I am planning to add later) .
+  </p>
+  <p>
+   Also you might find that sometimes you get one more or one less choromosomes than you expected, that is because I used
+   <code>
+    int()
+   </code>
+   everything to make sure interger. I assume it won’t be a big problem for a large population. This will be fixed in later releases.
+  </p>
+  <h2 id="2-functions-and-implementation">
+   2. functions and implementation
+  </h2>
+  <h3 id="21-class-attributes">
+   2.1  class attributes
+  </h3>
+  <pre><code class="python">    def __init__(self,gene_set,gene_range,population_size):
+        self.gene_set = gene_set
+        self.gene_size = len(gene_set)
+        self.gene_range = gene_range
+
+        self.population_size = population_size
+
+        self.chromosomes = self.initialize_chromosomes(self.population_size)
+
+        self.generation_number = 0
+</code></pre>
+  <h3 id="22-functions">
+   2.2 functions
+  </h3>
+  <h4 id="221-assign_fitnessselfgene">
+   2.2.1
+   <code>
+    assign_fitness(self,gene)
+   </code>
+  </h4>
+  <p>
+   This is user defined function
+  </p>
+  <h4 id="222-initialize_chromosomeself">
+   2.2.2
+   <code>
+    initialize_chromosome(self)
+   </code>
+  </h4>
+  <p>
+   Use attributes and
+   <code>
+    assign_fitness
+   </code>
+   to generate a chromosome in the form of
+  </p>
+  <p>
+   <mathjax>
+    $$chromosome = [ [  gene[site]  ] , fitness ]$$
+   </mathjax>
+  </p>
+  <h4 id="223-initialize_chromosomesselfpopulation_size">
+   2.2.3
+   <code>
+    initialize_chromosomes(self,population_size)
+   </code>
+  </h4>
+  <p>
+   This function use
+   <code>
+    initialize_chromosome
+   </code>
+   to generate a list of chromosomes in the form of
+  </p>
+  <p>
+   <mathjax>
+    $$chromosomes = [ chromosome ]$$
+   </mathjax>
+  </p>
+  <h4 id="224-roulette_fitnessself">
+   2.2.4
+   <code>
+    roulette_fitness(self)
+   </code>
+  </h4>
+  <p>
+   This function will use fitness as a bias to choose a chromosome
+  </p>
+  <h4 id="225-mutatechromosome-mutate_strength1">
+   2.2.5
+   <code>
+    mutate(chromosome, mutate_strength=1)
+   </code>
+  </h4>
+  <p>
+   mutate
+   <code>
+    mutate_strength
+   </code>
+   sites in the
+   <code>
+    chromosome
+   </code>
+  </p>
+  <h4 id="226-migrateselfimmigration_size">
+   2.2.6
+   <code>
+    migrate(self,immigration_size)
+   </code>
+  </h4>
+  <p>
+   same as initialize chromosomes
+  </p>
+  <h4 id="227-hybridfathermother">
+   2.2.7
+   <code>
+    hybrid(father,mother)
+   </code>
+  </h4>
+  <p>
+   generate a child using genes randomly chosen from father and mother. If the site of gene are odd, then mother have one more contribution than father. Else choose half of
+   <code>
+    gene_site
+   </code>
+   randomly from father and mother
+  </p>
+  <h4 id="228-population_crossoverselfroulettefalsecrossover_ratio01">
+   2.2.8
+   <code>
+    population_crossover(self,roulette=False,crossover_ratio=0.1)
+   </code>
+  </h4>
+  <h4 id="229-assign_simiarityselfpair">
+   2.2.9
+   <code>
+    assign_simiarity(self,pair)
+   </code>
+  </h4>
+  <p>
+   This function takes in chromosomes and extract thier gene and then return the distance of genes as similarity, the distance is simply absulute difference.
+  </p>
+  <p>
+   <strong>
+    you can make it use euclidean distance
+   </strong>
+  </p>
+  <p>
+   The similairty is averaged normalized in range (0,1)
+   <br/>
+   the code need to use
+   <code>
+    gene_range[site]
+   </code>
+   to normalize and
+   <code>
+    gene_size
+   </code>
+   to average
+  </p>
+  <p>
+   <mathjax>
+    $$ similarity = difference / gene_range $$
+   </mathjax>
+  </p>
+  <p>
+   the
+  </p>
+  <h4 id="2210-nicheself-niche_ratio00-niche_criterion00">
+   2.2.10
+   <code>
+    niche(self, niche_ratio=0.0, niche_criterion=0.0)
+   </code>
+  </h4>
+  <p>
+   This function use
+   <code>
+    assign_similarity
+   </code>
+   and
+  </p>
+  <h4 id="2211-selectself-select_ratio00-select_criterion00">
+   2.2.11
+   <code>
+    select(self, select_ratio=0.0, select_criterion=0.0)
+   </code>
+  </h4>
+  <h4 id="2212-evolveself-niche_ratio01-niche_criterion00">
+   2.2.12
+   <code>
+    evolve(self, niche_ratio=0.1, niche_criterion=0.0)
+   </code>
+  </h4>
+  <h2 id="3complex-ideas">
+   3.complex ideas
+  </h2>
+  <h3 id="31-multiple-hybrid">
+   3.1 multiple hybrid
+  </h3>
+  <p>
+   like hybrid using genes from 3 parents. This can be done but is of little use since generating a purmutation list of three parents are slow, and multiple parents is basically the same if you tune up the
+   <code>
+    crossover_ratio
+   </code>
+   and set
+   <code>
+    roulettel
+   </code>
+   =
+   <code>
+    True
+   </code>
+  </p>
+  <h3 id="32-hybrid-strictly-according-to-fitness">
+   3.2 hybrid strictly according to fitness
+  </h3>
+  <h3 id="33-make-a-method-ranks-the-fitness-number-each-chromosome">
+   3.3 make a method ranks the fitness / number each chromosome /…
+  </h3>
+  <p>
+   well I am just lazy
+  </p>
+  <h2 id="4-code">
+   4. code
+  </h2>
+  <pre><code class="ptyhon">import itertools
+import random
+
+import easygui
+
+
+class population:
+    """
+    A population has the following properties:
+
+    Attributes:
+        gene_set: A list representing the genes
+        gene_size: The number of gene-sites in the list (gene_set)
+        gene_range: The upper-lower value of each gene-site, this is only for number strings
+        population_size: the number of chromosomes
+        chromosomes: A list of chromosomes
+        generation_number: useful for identifying times of evolution
+
+    Methods:
+        __init__: initialize the basic info about the population
+        assign_fitness: user defined function. the fitnesss can be any number. the bigger the better
+        initialize_chromosome:
+        and others (fill in later)
+
+    """
+
+    def __init__(self, gene_set, gene_range, population_size):
+        """
+        :param gene_set:
+        :param gene_range:
+        :param population_size:
+        """
+        self.gene_set = gene_set
+        self.gene_size = len(gene_set)
+        self.gene_range = gene_range
+
+        self.population_size = population_size
+
+        self.chromosomes = self.initialize_chromosomes()
+
+        self.generation_number = 0
+
+    def assign_fitness(self, gene):
+        """
+        :param gene:
+        :return: user defined fitness, bigger better
+        """
+        return sum(gene)
+
+    def initialize_chromosome(self):
+        """
+        :return: chromosome: [gene_list,fitness]
+        """
+        gene = []
+        for site in range(self.gene_size):
+            gene.append(random.choice(self.gene_set[site]))
+
+        fitness = self.assign_fitness(gene)
+
+        chromosome = [gene, fitness]
+
+        return chromosome
+
+    def initialize_chromosomes(self):
+        """
+        :param size:
+        :return: len(chromosomes) = size
+        """
+        self.chromosomes = []
+        for i in range(self.population_size):
+            self.chromosomes.append(self.initialize_chromosome())
+        return self.chromosomes
+
+    def roulette_fitness(self):
+        """
+        'roll a roulette, the ball will randomly end up in a pocket, showing the selected result'
+        to put it simply, it use fitness as a bias to randomly draw chromosome
+        I am pround to say that this fitness need not to be normalized at all. the implementation is pretty easy.
+        read the code and you'll know
+        :return: return the chromosome selected
+        """
+
+        fitness_list = [chromosome[1] for chromosome in self.chromosomes]
+
+        roulette_ball = random.uniform(0, sum(fitness_list))
+        roulette_result = -1
+        roulette_pocket = 0.0
+
+        for index, roulettee in enumerate(fitness_list):
+            roulette_pocket += roulettee
+            if roulette_ball &lt;= roulette_pocket:
+                roulette_result = index
+
+        return self.chromosomes[roulette_result]
+
+    def mutate(self, chromosome, mutate_strength=1):
+        """
+        mutate a chromosome and automatically get fitness
+
+        here I used alternate to make sure mutated gene is different
+        here I used a new gramma:  a=b if conditionb else c
+        it equals to if conditionb : a=b else: a=c
+        :param chromosome: input
+        :param mutate_strength: number of gene-sites mutated
+        :return: mutated chromosome *NOT gene, included fitness*
+        """
+        gene = chromosome[0]
+        mutate_site = random.sample(range(self.gene_size), mutate_strength)
+
+        for site in mutate_site:
+            new_gene, alternate = random.sample(self.gene_set[site], 2)
+            gene[site] = new_gene if new_gene != gene[site] else alternate
+
+        mutated_chromosome = [gene, self.assign_fitness(gene)]
+        return mutated_chromosome
+
+    def migrate(self, immigration_size=2):
+        """
+        basically the same with initialze, but you cana control the size
+        :param immigration_size:
+        :return: added self.chromosomes (to the tail)
+        """
+        for i in range(int(immigration_size)):
+            # print 'x', type(self.chromosomes),type(x)
+            # print type(x),x
+            self.chromosomes.append(self.initialize_chromosome())
+
+        return self.chromosomes
+
+    def hybrid(self, father, mother):
+        """
+        make *one* baby. use population_crossover to perform repoduce
+
+        mother might play a more important role here s
+        for odd number, mther will have one more gene pased on
+        as in nature, mother will pass on most of cyto-gene
+        :param father:
+        :param mother:
+        :return: a single child
+        """
+        father_gene = father[0]
+        mother_gene = mother[0]
+        individual_size = len(father_gene)
+        from_father = random.sample(range(individual_size), int(individual_size / 2))
+        child_gene = []
+        child = []
+        for site in range(self.gene_size):
+            if site in from_father:
+                child_gene.append(father_gene[site])
+            else:
+                child_gene.append(mother_gene[site])
+        child.append(child_gene)
+        child.append(self.assign_fitness(child_gene))
+        return child
+
+    def population_crossover(self, roulette=False, crossover_ratio=0.1):
+        """
+        based on hybrid. reproduce babies according to crossover_ratio
+
+        :param roulette: if True: the fittest parents are selected (only *fitness-biased* randomly) (still randomly)\
+        if False: all parents are selected randomly
+        :param crossover_ratio:
+        :return: added self.chromosomes (to the tail)
+        """
+        hybird_list = []
+        offspring_number = int(len(self.chromosomes) * crossover_ratio)
+
+        if roulette == True:
+            for i in range(offspring_number):
+                father = self.roulette_fitness()
+                mother = self.roulette_fitness()
+
+                count = 5
+                while father == mother:
+                    mother = self.roulette_fitness()
+                    count -= 1
+                    if count == 0:
+                        print('warning : father and mother kept being the same in roulette')
+                        break
+
+                hybird_list.append([father, mother])
+        else:
+            # random hybrid
+            hybird_list = list(itertools.permutations(self.chromosomes, 2))
+            hybird_list = random.sample(hybird_list, offspring_number)
+
+        for pair in hybird_list:
+            self.chromosomes.append(self.hybrid(pair[0], pair[1]))
+
+        return self.chromosomes
+
+    def assign_simiarity(self, pair):
+        """
+        can be user defined, can be complicated as fingerprint functions.
+
+        :param pair: pair of chromosomes
+        :return: the similarity based on the euclidean distance of their genes (normalized and averaged)
+        """
+
+        object = pair[0]
+        subject = pair[1]
+
+        object_gene = object[0]
+        subject_gene = subject[0]
+
+        normalized_diversity = 0.0
+        similarity = 0.0
+
+        for site in range(self.gene_size):
+            normalized_diversity += ((object_gene[site] - subject_gene[site]) / self.gene_range[site]) ** 2
+            similarity += 1.0 - normalized_diversity
+
+        similarity = similarity / self.gene_size
+
+        return similarity
+
+    def niche(self, niche_ratio=0.0, niche_criterion=0.0):
+        """
+        prevent premature, kill similar chromosomes to prevent clustering
+        :param niche_ratio:if non zero, niche out a ratio of population
+        :param niche_criterion: if non zero niche out population similarity higher than criterion
+        :return: population, killed
+        """
+        assert niche_ratio * niche_criterion == 0 and niche_ratio ** 2 + niche_criterion ** 2 != 0
+        # one of them is non-zero and the other zero
+
+        killed_index = []
+        killed = 0
+
+        pair_list = list(itertools.permutations(enumerate(self.chromosomes), 2))
+        numbered_similarity_list = []
+
+        for numbered_pair in pair_list:
+            # numbered_pair = ((index,[gene,fitness]),(index,[gene,fitness]))
+            # items:             00    010              10    110
+            index_a = numbered_pair[0][0]
+            chromosome_a = numbered_pair[0][1]
+
+            index_b = numbered_pair[1][0]
+            chromosome_b = numbered_pair[1][1]
+
+            similarity_ab = self.assign_simiarity((chromosome_a, chromosome_b))
+
+            numbered_similarity_list.append([index_a, index_b, similarity_ab])
+
+        numbered_similarity_list.sort(key=lambda x: x[2], reverse=True)
+
+        if niche_ratio != 0:
+            kill_count = int(len(self.chromosomes) * niche_ratio)
+
+            while kill_count:
+                pair = numbered_similarity_list.pop(0)  # pair = [indexa,indeb,similarityab]
+                killed_index.append(pair[1])
+                kill_count -= 1
+
+        if niche_criterion != 0:
+            for pair in numbered_similarity_list:  # pair = [indexa,indeb,similarityab]
+                if pair[2] &gt; niche_criterion:
+                    killed_index.append(pair[1])
+
+        killed_index.sort(reverse=True)
+
+        for unfit in killed_index:
+            del self.chromosomes[unfit]
+            killed += 1
+
+        return self.chromosomes, killed
+
+    def select(self, select_ratio=0.0, select_criterion=0.0):
+        """
+        basic EA operator
+        :param select_ratio: if non zero, kill out a ratio of population
+        :param select_criterion: if non zero, kill out population similarity lower than criterion
+        :return:
+        """
+        assert select_ratio * select_criterion == 0 and select_ratio ** 2 + select_criterion ** 2 != 0
+        # one of them is non-zero and the other zero
+
+        killed_index = []
+        killed = 0
+
+        if select_ratio != 0:
+            kill_count = int(len(self.chromosomes) * select_ratio)
+
+            # enumerate(self.chromosomes)=(index,chromosome)=(index,[gene,fitness])
+            rank_fitness = sorted(enumerate(self.chromosomes), key=lambda list: list[1][1])
+
+            while kill_count:
+                target = rank_fitness.pop(0)
+                killed_index.append(target[0])
+                kill_count -= 1
+
+        if select_criterion != 0:
+            for index, individual in enumerate(self.chromosomes):
+                if individual[1] &lt; select_criterion:
+                    killed_index.append(index)
+
+        killed_index.sort(reverse=True)
+
+        for unfit in killed_index:
+            del self.chromosomes[unfit]
+            killed += 1
+
+        return self.chromosomes, killed
+
+    def evolve(self, niche_ratio=0.1, niche_criterion=0.0,
+               immigration_size=2,
+               roulette=False, crossover_ratio=0.2,
+               select_ratio=0.1, select_criterion=0.0):
+        """
+        toy model of evolution
+        :param niche_ratio:
+        :param niche_criterion:
+        :param immigration_size:
+        :param roulette:
+        :param crossover_ratio:
+        :param select_ratio:
+        :param select_criterion:
+        :return:
+        """
+
+        self.chromosomes, killed = self.niche(niche_criterion=niche_criterion, niche_ratio=niche_ratio)
+        print 'aasa', self.chromosomes
+
+        self.chromosomes = self.migrate(immigration_size=immigration_size)
+
+        self.chromosomes = self.population_crossover(roulette=roulette, crossover_ratio=crossover_ratio)
+
+        self.chromosomes, killed = self.select(select_ratio=select_ratio, select_criterion=select_criterion)
+
+        self.generation_number += 1
+
+        return self.chromosomes
+
+    def find_fittest(self):
+        """
+        the name says all
+        :return:
+        """
+        rank_fitness = sorted(enumerate(self.chromosomes), key=lambda list: list[1][1], reverse=True)
+        return rank_fitness[0]
+
+    def gui_display_population(self):
+        """
+        the name says all
+        :return:
+        """
+        info_population = []
+
+        for number, chromosome in enumerate(self.chromosomes):
+            chromosome_str = ''.join((str(number), '   |||   ', str(chromosome), '\n'))
+            info_population.append(chromosome_str)
+        population_message = ''.join(info_population)
+        print population_message
+
+        msg = 'Display generation number : ' + str(self.generation_number) + '\n' + \
+              'chromosome#|||                       gene                 |fitness\n' \
+              '-----------|||--------------------------------------------|-------\n' + \
+              'fittest : ' + str(self.find_fittest())
+        easygui.textbox(msg=msg, text=population_message, codebox=True)
+
+
+def gui_input_gene():
+    easygui.msgbox('  This is a NSGA(number string genetic algorithm) program built by Yingkai Liu'
+                   '\n                                enjoy!                                      '
+                   '\n'
+                   '\n                  should you find any problems, contact                     '
+                   '\n                      water@mail.nankai.edu.cn                              ',
+                   'NSGA')
+
+    number_of_gene_input = easygui.enterbox(
+        msg='           Here you need to specify number of gene sites first.',
+        title='NSGA-number_of_gene',
+        default='3')
+
+    number_of_gene = int(number_of_gene_input)
+    gene_set_field_name = []
+    for i in range(number_of_gene):
+        gene_set_field_name.append("*****************" + str(i) + "th gene's high")
+        gene_set_field_name.append("low")
+        gene_set_field_name.append("number of interval")
+
+    gene_set_input = easygui.multenterbox(
+        msg='Here you need to specify the high,low,step of each parameter\n and of course, it starts from zero\n',
+        title='NSGA-gene_set[]',
+        fields=gene_set_field_name,
+        values=[str(i) for i in range(len(gene_set_field_name))])
+
+    hi_of_each_gene = []
+    lo_of_each_gene = []
+    n_of_each_gene = []
+
+    step_of_each_gene = []
+    range_of_each_gene = []
+    val_of_each_gene = []
+
+    for i in range(number_of_gene):
+        hi_of_each_gene.append(float(gene_set_input[3 * i + 0]))
+        lo_of_each_gene.append(float(gene_set_input[3 * i + 1]))
+        n_of_each_gene.append(int(gene_set_input[3 * i + 2]))
+
+    for i in range(number_of_gene):
+        # take the absolute of high - low
+        step_of_each_gene.append(abs((hi_of_each_gene[i] - lo_of_each_gene[i]) / float(n_of_each_gene[i] - 1)))
+        range_of_each_gene.append(abs(hi_of_each_gene[i] - lo_of_each_gene[i]))
+        val_of_each_gene.append([])
+
+    for m in range(number_of_gene):
+        for k in range(n_of_each_gene[m]):
+            val_of_each_gene[m].append(lo_of_each_gene[m] + k * step_of_each_gene[m])
+
+    confirm_message = ''
+    for i in range(number_of_gene):
+        info = ['***the ', str(i), 'th Gene:',
+                '\n                 High:: ', str(hi_of_each_gene[i]),
+                '\n                  Low:: ', str(lo_of_each_gene[i]),
+                '\n                Range:: ', str(range_of_each_gene[i]),
+                '\n                    N:: ', str(n_of_each_gene[i]),
+                '\n                 Step:: ', str(step_of_each_gene[i]),
+                '\n                         **********Gene Set @ site ' + str(i) + '**********',
+                '\n                        ', str(val_of_each_gene[i]),
+                '\n']
+        confirm_message += ''.join(info)
+
+    easygui.textbox(msg='Here is the confirm message of your input:\n'
+                        '\n'
+                        'total site = ' + str(number_of_gene) + '\n',
+                    title='NSGA-confirm_message',
+                    text=confirm_message,
+                    codebox=True)
+
+    gene_set = val_of_each_gene
+    gene_range = range_of_each_gene
+
+    return gene_set, gene_range
+
+
+geneSet, geneRange = gui_input_gene()
+
+a = population(gene_range=geneRange, gene_set=geneSet, population_size=10)
+
+print(a.chromosomes)
+
+print(a.generation_number, a.evolve())
+
+a.gui_display_population()
+
+
+</code></pre>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>
