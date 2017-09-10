@@ -8,21 +8,26 @@ Hope you like this... I guess?
 ----------
 Here is a list of planning, ongoing and finished projects.
 
-|Name                                     |  status          |
-|:--------------------------------------- |   :---:          |
-|[list-based evolutionary algorithm][1]   |  unfinished      |
-|[curve-alignment][2]                     |  planning        |
-|[Ubuntu-on-thumb-drive][3]               | to be organized  |
+|Name                                            |  status          |
+|:---------------------------------------        |   :---:          |
+|[[list-based evolutionary algorithm][1] \[1\]   |  unfinished      |
+|[curve-alignment][2]                            |  planning        |
+|[Ubuntu-on-thumb-drive][3]                      | to be organized  |
+|[OO database for materials][4] \[4\]            |  planning        |
 
 
 [1]:https://github.com/yk-liu/list-based-evolutionary-algorithm
 [2]:https://github.com/yk-liu/curve-alignment
 [3]:https://github.com/yk-liu/Ubuntu-on-thumb-drive
+[4]:https://github.com/yk-liu/database
+
+ [1] :  a well organized EA can be found [here](https://github.com/PytLab/gaft). I am learning from his structure and parallelization.
+ 
+ [4] : pymatgen, an object oriented databse, can be found [here](https://github.com/materialsproject/pymatgen)
+
 
 ------------
-Also [here][99] is a computation physics documents in UNLV. 
-
-[99]:https://github.com/yk-liu/2017-cmp
+Also [here](https://github.com/qzhu2017/2017-cmp) with [my homework solutions](https://github.com/yk-liu/2017-cmp) is a computation physics documents in UNLV. 
 
 ------------
 Contact me:
