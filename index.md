@@ -10,10 +10,10 @@ Here is a list of planning, ongoing and finished projects.
 
 |Name                                            |  status          |
 |:---------------------------------------        |   :---:          |
-|[[list-based evolutionary algorithm][1] \[\*\]   |  unfinished      |
+|[list-based evolutionary algorithm][1] \*       |  unfinished      |
 |[curve-alignment][2]                            |  planning        |
 |[Ubuntu-on-thumb-drive][3]                      | to be organized  |
-|[OO database for materials][4] \[\*\*\]            |  planning        |
+|[OO database for materials][4] \*\*             |  planning        |
 
 
 [1]:https://github.com/yk-liu/list-based-evolutionary-algorithm
