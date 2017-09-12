@@ -1,3 +1,4 @@
+
 # Welcome to my site! 
 
 This is a site for Yingkai Liu to share his codes and maybe other stuff.
@@ -32,9 +33,9 @@ Also [here](https://github.com/qzhu2017/2017-cmp) with [my homework solutions](h
 ------------
 Contact me:
 
-To avoid spam, you need to be smarter than a web crawler
-if my id# were `123456789`, my email would be `123456789@qq.com`
-now my id# is `949482709`, my email would be...?
+To avoid spam, you need to be smarter than a web crawler.
+if my id# were `123456789`, my email would be `123456789@qq.com`.
+Now my id# is `949482709`, my email would be...?
 
 ----
 
